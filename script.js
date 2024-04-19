@@ -1,19 +1,20 @@
 const ctx = document.querySelector("#blackboard").getContext("2d");
 
-let width_blackboard = window.innerWidth;
-let height_blackboard = window.innerHeight;
-
 const init = () => {
   window.requestAnimationFrame(draw);
 }
 
 const draw = () => {
-  document.querySelector("#blackboard").style.width = window.innerWidth + "px";
-  document.querySelector("#blackboard").style.height = window.innerHeight + "px";
+  document.querySelector("#blackboard").width = window.innerWidth -20;
+  document.querySelector("#blackboard").height = window.innerHeight -20;
 
-  ctx.clearRect(0, 0, width_blackboard, height_blackboard);
-  ctx.fillStyle = "black";
-  ctx.fillRect(0, 0, width_blackboard, height_blackboard);
+  const gradient = ctx.createRadialGradient((window.innerWidth -20)/2, (window.innerHeight -20)/2, 0, (window.innerWidth -20)/2, (window.innerHeight -20)/2, (window.innerWidth -20));
+  gradient.addColorStop(0, "pink");
+  gradient.addColorStop(0.9, "white");
+  gradient.addColorStop(1, "green");
+
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, window.innerWidth -20, window.innerHeight -20);
   // window.requestAnimationFrame(draw);
 }
 
