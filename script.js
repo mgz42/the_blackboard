@@ -1,18 +1,34 @@
 const ctx = document.querySelector("#blackboard").getContext("2d");
 const craie = document.querySelector(".craie");
+const craie_box = document.querySelector(".craie_box");
+
+let craie_up = false;
 
 const update_pos_craie = (e) => {
-  // console.log(craie);
   craie.style.top = (e.clientY - 25) + "px";
   craie.style.left = e.clientX + "px";
   craie.style.rotate = "-20deg";
 }
 
-const action_craie = () => {
-  window.addEventListener("mousemove", (e)=>{update_pos_craie(e)});
+const action_craie_up = () => {
+  window.removeEventListener("mousemove", update_pos_craie);
+  craie.style.setProperty('top', 'initial');
+  craie.style.bottom = "1rem";
+  craie.style.left = "1rem";
+  craie.style.rotate = "0deg";
 }
 
-craie.addEventListener("click", ()=>{action_craie();});
+const action_craie_down = () => {
+  window.addEventListener("mousemove", update_pos_craie)
+}
+
+
+const action_craie = () => {
+  craie_up === false ? action_craie_down() : action_craie_up();
+  craie_up === false ? craie_up = true : craie_up = false;
+}
+
+craie_box.addEventListener("click", ()=>{action_craie()});
 
 const init = () => {
   window.requestAnimationFrame(draw);

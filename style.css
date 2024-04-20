@@ -10,4 +10,14 @@ body{
   bottom: 1rem;
   left: 1rem;
   border-radius: 8px 0 0 8px;
+  pointer-events: none;
+}
+
+.craie_box{
+  width: 10rem;
+  height: 2.5rem;
+  background-color: transparent;
+  position: fixed;
+  bottom: 0.6rem;
+  left: 1rem;
 }
