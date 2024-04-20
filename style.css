@@ -2,3 +2,12 @@ body{
   margin: 10;
   padding: 0;
 }
+.craie{
+  width: 10rem;
+  background-color: rgb(248, 242, 240);
+  height: 1.5rem;
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  border-radius: 8px 0 0 8px;
+}
