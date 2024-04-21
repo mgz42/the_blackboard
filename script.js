@@ -10,7 +10,7 @@ const craie_draw = (e) => {
   ctx.arc(e.clientX, e.clientY, 5, 0, 2 * Math.PI);
   ctx.fill();
 
-  window.requestAnimationFrame(craie_draw);
+  // window.requestAnimationFrame(craie_draw()); // DOESNT WORK yet
 
 }
 
