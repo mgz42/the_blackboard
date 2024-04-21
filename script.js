@@ -4,10 +4,20 @@ const craie_box = document.querySelector(".craie_box");
 
 let craie_up = false;
 
+const craie_draw = (e) => {
+  ctx.beginPath();
+  ctx.fillStyle = "rgb(248, 242, 240)";
+  ctx.arc(e.clientX, e.clientY, 5, 0, 2 * Math.PI);
+  ctx.fill();
+
+  window.requestAnimationFrame(craie_draw);
+
+}
+
 const update_pos_craie = (e) => {
-  craie.style.top = (e.clientY - (35 - (e.clientY/20)) ) + "px";
+  craie.style.top = (e.clientY - (40 - (e.clientY/20)) ) + "px";
   craie.style.left = e.clientX + "px";
-  craie.style.rotate = "-" + String(30 - (e.clientY/20)) + "deg";
+  craie.style.rotate = "-" + String(35 - (e.clientY/20)) + "deg";
 }
 
 const action_craie_up = () => {
@@ -44,7 +54,8 @@ const draw = () => {
 
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, window.innerWidth -20, window.innerHeight -20);
-  // window.requestAnimationFrame(draw);
 }
 
 init();
+
+window.addEventListener("mousedown", craie_draw )
