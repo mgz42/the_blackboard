@@ -5,9 +5,9 @@ const craie_box = document.querySelector(".craie_box");
 let craie_up = false;
 
 const update_pos_craie = (e) => {
-  craie.style.top = (e.clientY - 25) + "px";
+  craie.style.top = (e.clientY - (35 - (e.clientY/20)) ) + "px";
   craie.style.left = e.clientX + "px";
-  craie.style.rotate = "-20deg";
+  craie.style.rotate = "-" + String(30 - (e.clientY/20)) + "deg";
 }
 
 const action_craie_up = () => {
