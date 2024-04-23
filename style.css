@@ -1,6 +1,7 @@
 body{
   margin: 10;
   padding: 0;
+  background-color: rgb(54, 54, 54);
 }
 .craie{
   width: 10rem;
@@ -20,4 +21,14 @@ body{
   position: fixed;
   bottom: 0.6rem;
   left: 1rem;
+}
+.background{
+  position: fixed;
+  top: 7px;
+  left: 7px;
+  bottom: 7px;
+  right: 7px;
+  background-image: radial-gradient(rgb(25, 25, 25), black);
+  z-index: -1;
+  border-radius: 8px;
 }
