@@ -17,7 +17,7 @@ const craie_draw = () => {
   ctx.arc(pos_craie.x, pos_craie.y , 6, 0, 2 * Math.PI);
   ctx.fill();
 
-  window.requestAnimationFrame(craie_draw);
+  // window.requestAnimationFrame(craie_draw);
 
 }
 
@@ -26,10 +26,10 @@ const eponge_draw = () => {
 
   ctx.beginPath();
   ctx.fillStyle = "red";
-  ctx.arc(pos_craie.x, pos_craie.y , 15, 0, 2 * Math.PI);
+  ctx.arc(pos_craie.x, pos_craie.y , 24, 0, 2 * Math.PI);
   ctx.fill();
 
-  window.requestAnimationFrame(eponge_draw);
+  // window.requestAnimationFrame(eponge_draw);
 
 }
 
