@@ -17,8 +17,6 @@ const craie_draw = () => {
   ctx.fillStyle = "rgb(248, 242, 240)";
   ctx.arc(pos_craie.x, pos_craie.y , 6, 0, 2 * Math.PI);
   ctx.fill();
-
-  // window.requestAnimationFrame(craie_draw);
 }
 
 const eponge_draw = () => {
@@ -29,11 +27,11 @@ const eponge_draw = () => {
   ctx.arc(pos_craie.x, pos_craie.y , 24, 0, 2 * Math.PI);
   ctx.fill();
 
+  // CI DESSOUS A TRANFORMER EN CLASSE AVEC OPACITE ET DUREE DE VIE
   ctx2.beginPath();
-  ctx2.fillStyle = "rgba(0,0,0,0.1)";
+  ctx2.fillStyle = "rgba(0,0,0,0.15)";
   ctx2.arc(pos_craie.x, pos_craie.y , 24, 0, 2 * Math.PI);
   ctx2.fill();
-  // window.requestAnimationFrame(eponge_draw);
 }
 
 const update_pos_craie = (e) => {
