@@ -10,12 +10,26 @@ let pos_craie = {
 };
 
 const craie_draw = () => {
+  ctx.globalCompositeOperation = 'source-over';
+
   ctx.beginPath();
   ctx.fillStyle = "rgb(248, 242, 240)";
   ctx.arc(pos_craie.x, pos_craie.y , 6, 0, 2 * Math.PI);
   ctx.fill();
 
   window.requestAnimationFrame(craie_draw);
+
+}
+
+const eponge_draw = () => {
+  ctx.globalCompositeOperation = 'destination-out';
+
+  ctx.beginPath();
+  ctx.fillStyle = "red";
+  ctx.arc(pos_craie.x, pos_craie.y , 15, 0, 2 * Math.PI);
+  ctx.fill();
+
+  window.requestAnimationFrame(eponge_draw);
 
 }
 
@@ -59,10 +73,10 @@ const draw = () => {
 
   // ctx.fillStyle = gradient;
   // ctx.fillRect(0, 0, window.innerWidth -20, window.innerHeight -20);
-
-
 }
 
 init();
 window.addEventListener("mousemove", (e)=>{console.log(e)
-  if (e.buttons === 1 && craie_up === true){pos_craie.x = e.clientX; pos_craie.y = e.clientY; craie_draw();}} )
+  if (e.buttons === 1 && craie_up === true){pos_craie.x = e.clientX; pos_craie.y = e.clientY; craie_draw();}
+  else if(e.buttons === 1 && craie_up === false){pos_craie.x = e.clientX; pos_craie.y = e.clientY; eponge_draw();}
+} )
