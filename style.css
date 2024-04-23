@@ -32,3 +32,8 @@ body{
   z-index: -1;
   border-radius: 8px;
 }
+#eponge_board{
+  position: fixed;
+  z-index: 3;
+  pointer-events: none;
+}

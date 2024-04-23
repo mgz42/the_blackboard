@@ -1,6 +1,7 @@
 const ctx = document.querySelector("#blackboard").getContext("2d");
 const craie = document.querySelector(".craie");
 const craie_box = document.querySelector(".craie_box");
+const ctx2 = document.querySelector("#eponge_board").getContext("2d");
 
 let craie_up = false;
 
@@ -18,19 +19,21 @@ const craie_draw = () => {
   ctx.fill();
 
   // window.requestAnimationFrame(craie_draw);
-
 }
 
 const eponge_draw = () => {
   ctx.globalCompositeOperation = 'destination-out';
 
   ctx.beginPath();
-  ctx.fillStyle = "red";
+  ctx.fillStyle = "black";
   ctx.arc(pos_craie.x, pos_craie.y , 24, 0, 2 * Math.PI);
   ctx.fill();
 
+  ctx2.beginPath();
+  ctx2.fillStyle = "rgba(0,0,0,0.1)";
+  ctx2.arc(pos_craie.x, pos_craie.y , 24, 0, 2 * Math.PI);
+  ctx2.fill();
   // window.requestAnimationFrame(eponge_draw);
-
 }
 
 const update_pos_craie = (e) => {
@@ -51,7 +54,6 @@ const action_craie_down = () => {
   window.addEventListener("mousemove", update_pos_craie)
 }
 
-
 const action_craie = () => {
   craie_up === false ? action_craie_down() : action_craie_up();
   craie_up === false ? craie_up = true : craie_up = false;
@@ -67,6 +69,8 @@ const draw = () => {
   document.querySelector("#blackboard").width = window.innerWidth -20;
   document.querySelector("#blackboard").height = window.innerHeight -20;
 
+  document.querySelector("#eponge_board").width = window.innerWidth -20;
+  document.querySelector("#eponge_board").height = window.innerHeight -20;
   // const gradient = ctx.createRadialGradient((window.innerWidth -20)/2, (window.innerHeight -20)/2, 0, (window.innerWidth -20)/2, (window.innerHeight -20)/2, (window.innerWidth -20));
   // gradient.addColorStop(0, "rgba(0,0,0,0.86)");
   // gradient.addColorStop(1, "black");
@@ -76,6 +80,7 @@ const draw = () => {
 }
 
 init();
+
 window.addEventListener("mousemove", (e)=>{console.log(e)
   if (e.buttons === 1 && craie_up === true){pos_craie.x = e.clientX; pos_craie.y = e.clientY; craie_draw();}
   else if(e.buttons === 1 && craie_up === false){pos_craie.x = e.clientX; pos_craie.y = e.clientY; eponge_draw();}
