@@ -5,6 +5,14 @@ const ctx2 = document.querySelector("#eponge_board").getContext("2d");
 
 let craie_up = false;
 
+class Eponge {
+  constructor(){
+    this.opacite = 0.15
+  }
+}
+
+let liste_eponge = [];
+
 let pos_craie = {
   x : undefined,
   y : undefined
@@ -27,7 +35,7 @@ const eponge_draw = () => {
   ctx.arc(pos_craie.x, pos_craie.y , 24, 0, 2 * Math.PI);
   ctx.fill();
 
-  // CI DESSOUS A TRANFORMER EN CLASSE AVEC OPACITE ET DUREE DE VIE
+
   ctx2.beginPath();
   ctx2.fillStyle = "rgba(0,0,0,0.15)";
   ctx2.arc(pos_craie.x, pos_craie.y , 24, 0, 2 * Math.PI);
