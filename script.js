@@ -32,7 +32,7 @@ const iterateur_eponge = () => {
 
   let empty = true;
 
-  liste_eponge.forEach((eponge)=>{
+  liste_eponge.forEach(( eponge )=>{
     if (eponge.opacite > 0){
       empty = false;
     }
