@@ -6,12 +6,42 @@ const ctx2 = document.querySelector("#eponge_board").getContext("2d");
 let craie_up = false;
 
 class Eponge {
-  constructor(){
+  constructor(x, y){
     this.opacite = 0.15
+    this.x = x;
+    this.y = y;
   }
 }
 
 let liste_eponge = [];
+
+const iterateur_eponge = () => {
+  ctx2.clearRect(0,0,window.innerWidth, window.innerHeight);
+
+  liste_eponge.forEach((eponge)=>{
+    if (eponge.opacite > 0){
+      eponge.opacite -= 0.006;
+    }
+      ctx2.beginPath();
+      ctx2.fillStyle = "rgba(0,0,0,"+ eponge.opacite +")";
+      ctx2.arc(eponge.x, eponge.y , 54, 0, 2 * Math.PI);
+      ctx2.fill();
+
+      console.log(liste_eponge.length);
+  })
+
+  let empty = true;
+
+  liste_eponge.forEach((eponge)=>{
+    if (eponge.opacite > 0){
+      empty = false;
+    }
+  })
+
+  if (empty === true){ liste_eponge = [];}
+
+  requestAnimationFrame(iterateur_eponge);
+}
 
 let pos_craie = {
   x : undefined,
@@ -32,14 +62,11 @@ const eponge_draw = () => {
 
   ctx.beginPath();
   ctx.fillStyle = "black";
-  ctx.arc(pos_craie.x, pos_craie.y , 24, 0, 2 * Math.PI);
+  ctx.arc(pos_craie.x, pos_craie.y , 54, 0, 2 * Math.PI);
   ctx.fill();
 
-
-  ctx2.beginPath();
-  ctx2.fillStyle = "rgba(0,0,0,0.15)";
-  ctx2.arc(pos_craie.x, pos_craie.y , 24, 0, 2 * Math.PI);
-  ctx2.fill();
+  let the_eponge = new Eponge(pos_craie.x, pos_craie.y);
+  liste_eponge.push(the_eponge);
 }
 
 const update_pos_craie = (e) => {
@@ -77,15 +104,11 @@ const draw = () => {
 
   document.querySelector("#eponge_board").width = window.innerWidth -20;
   document.querySelector("#eponge_board").height = window.innerHeight -20;
-  // const gradient = ctx.createRadialGradient((window.innerWidth -20)/2, (window.innerHeight -20)/2, 0, (window.innerWidth -20)/2, (window.innerHeight -20)/2, (window.innerWidth -20));
-  // gradient.addColorStop(0, "rgba(0,0,0,0.86)");
-  // gradient.addColorStop(1, "black");
-
-  // ctx.fillStyle = gradient;
-  // ctx.fillRect(0, 0, window.innerWidth -20, window.innerHeight -20);
 }
 
 init();
+
+iterateur_eponge();
 
 window.addEventListener("mousemove", (e)=>{console.log(e)
   if (e.buttons === 1 && craie_up === true){pos_craie.x = e.clientX; pos_craie.y = e.clientY; craie_draw();}
