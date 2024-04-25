@@ -6,7 +6,7 @@ const ctx2 = document.querySelector("#eponge_board").getContext("2d");
 let craie_up = false;
 
 class Eponge {
-  constructor(x, y){
+  constructor( x, y ){
     this.opacite = 0.15
     this.x = x;
     this.y = y;
