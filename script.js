@@ -7,7 +7,7 @@ let craie_up = false;
 
 class Eponge {
   constructor( x, y ){
-    this.opacite = 0.15
+    this.opacite = 0.30
     this.x = x;
     this.y = y;
   }
@@ -20,14 +20,14 @@ const iterateur_eponge = () => {
 
   liste_eponge.forEach((eponge)=>{
     if (eponge.opacite > 0){
-      eponge.opacite -= 0.006;
+      eponge.opacite -= 0.009;
     }
       ctx2.beginPath();
       ctx2.fillStyle = "rgba(0,0,0,"+ eponge.opacite +")";
-      ctx2.arc(eponge.x, eponge.y , 54, 0, 2 * Math.PI);
-      ctx2.fill();
+      // ctx2.arc(eponge.x, eponge.y , 54, 0, 2 * Math.PI);
+      ctx2.roundRect(eponge.x - 74, eponge.y - 125 , 150, 250, 20);
 
-      console.log(liste_eponge.length);
+      ctx2.fill();
   })
 
   let empty = true;
@@ -62,7 +62,8 @@ const eponge_draw = () => {
 
   ctx.beginPath();
   ctx.fillStyle = "black";
-  ctx.arc(pos_craie.x, pos_craie.y , 54, 0, 2 * Math.PI);
+  // ctx.arc(pos_craie.x, pos_craie.y , 54, 0, 2 * Math.PI);
+  ctx.roundRect(pos_craie.x - 74, pos_craie.y - 125 , 150, 250, 20);
   ctx.fill();
 
   let the_eponge = new Eponge(pos_craie.x, pos_craie.y);
@@ -110,7 +111,7 @@ init();
 
 iterateur_eponge();
 
-window.addEventListener("mousemove", (e)=>{console.log(e)
+window.addEventListener("mousemove", (e)=>{
   if (e.buttons === 1 && craie_up === true){pos_craie.x = e.clientX; pos_craie.y = e.clientY; craie_draw();}
   else if(e.buttons === 1 && craie_up === false){pos_craie.x = e.clientX; pos_craie.y = e.clientY; eponge_draw();}
 } )
