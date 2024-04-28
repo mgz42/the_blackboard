@@ -46,4 +46,13 @@ body{
   background-image: url(Sans\ titre-1.png);
   border-radius: 15px;
   background-size: cover;
+  pointer-events: none;
+}
+.eponge_box{
+  width: 250px;
+  height: 150px;
+  background-color: transparent;
+  position: fixed;
+  bottom: 0.6rem;
+  left: 12rem;
 }
