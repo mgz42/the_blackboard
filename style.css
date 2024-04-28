@@ -37,3 +37,13 @@ body{
   z-index: 3;
   pointer-events: none;
 }
+.eponge{
+  position: fixed;
+  bottom: 1rem;
+  left: 12rem;
+  width: 250px;
+  height: 150px;
+  background-image: url(Sans\ titre-1.png);
+  border-radius: 15px;
+  background-size: cover;
+}
