@@ -12,7 +12,7 @@ let eponge_up = false;
 
 class Eponge {
   constructor( x, y ){
-    this.opacite = 0.30
+    this.opacite = 0.50
     this.x = x;
     this.y = y;
   }
@@ -25,7 +25,7 @@ const iterateur_eponge = () => {
 
   liste_eponge.forEach((eponge)=>{
     if (eponge.opacite > 0){
-      eponge.opacite -= 0.009;
+      eponge.opacite -= 0.014;
     }
       ctx2.beginPath();
       ctx2.fillStyle = "rgba(0,0,0,"+ eponge.opacite +")";
@@ -80,8 +80,9 @@ const update_pos_craie = (e) => {
 }
 
 const update_pos_eponge = (e) => {
-  eponge.style.top = (e.clientY - (40 - (e.clientY/20)) ) + "px";
-  eponge.style.left = e.clientX + "px";
+  eponge.style.top = (e.clientY - 75  ) + "px";
+  eponge.style.left = (e.clientX - 125) + "px";
+  eponge.style.transform = "rotate(90deg)";
   // eponge.style.rotate = "-" + String(35 - (e.clientY/20)) + "deg";
 }
 
