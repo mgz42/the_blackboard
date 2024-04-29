@@ -99,7 +99,7 @@ const action_eponge_up = () => {
   eponge.style.setProperty('top', 'initial');
   eponge.style.bottom = "1rem";
   eponge.style.left = "12rem";
-  // eponge.style.rotate = "0deg";
+  eponge.style.transform = 'rotate(0deg)';
 }
 
 const action_craie_down = () => {
