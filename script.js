@@ -112,13 +112,13 @@ const action_eponge_down = () => {
 
 
 const action_craie = () => {
-  craie_up === false ? action_craie_down() : action_craie_up();
-  craie_up === false ? craie_up = true : craie_up = false;
+  (craie_up === false && eponge_up === false) ? action_craie_down() : action_craie_up();
+  (craie_up === false && eponge_up === false) ? craie_up = true : craie_up = false;
 }
 
 const action_eponge = () => {
-  eponge_up === false ? action_eponge_down() : action_eponge_up();
-  eponge_up === false ? eponge_up = true : eponge_up = false;
+  (craie_up === false && eponge_up === false)  ? action_eponge_down() : action_eponge_up();
+  (craie_up === false && eponge_up === false)  ? eponge_up = true : eponge_up = false;
 }
 
 craie_box.addEventListener("click", ()=>{action_craie()});
